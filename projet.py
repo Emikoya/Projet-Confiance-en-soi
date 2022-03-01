@@ -35,12 +35,14 @@ def fade(width, height):
 def redrawWindow():
     screen.fill((255, 255, 255))
 
+
 def lastImageNumber():
     last = 0
     dir = "./img"
     for path in os.listdir(dir):
         last = last + 1
     return last
+
 
 # ~~~~MAIN~~~~
 pygame.init()
@@ -63,6 +65,6 @@ while (True):
     diff = True
     while (diff):
         verifImage = image
-        image = random.randint(1, 20)
+        image = random.randint(1, lastNumber)
         if verifImage != image:
             diff = False

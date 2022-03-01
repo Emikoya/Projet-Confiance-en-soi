@@ -17,11 +17,19 @@ def lastImageNumber():
 # Create image
 
 
-img = Image.new('RGB', (100, 30), color=(73, 109, 137))
+fontType = ImageFont.truetype("font/times-ro.ttf", 24)
 
-fnt = ImageFont.truetype('/Library/Fonts/Arial.ttf', 15)
-d = ImageDraw.Draw(img)
-d.text((10, 10), "Hello world", font=fnt, fill=(255, 255, 0))
+img = Image.new('RGB', (800, 480), color=(150, 150, 150))
 
-newLastImage = './img//'+lastImageNumber+1+'.png'
+draw = ImageDraw.Draw(img)
+draw.text((300, 200), "Coucou toi ! Tu sais que je t'adore !",
+          (0, 0, 0), font=fontType)
+
+numberLastImage = lastImageNumber()
+newLastImage = "./img/"+str(numberLastImage+1)+".png"
 img.save(newLastImage)
+
+
+# fnt = ImageFont.truetype('/Library/Fonts/Arial.ttf', 15)
+# d = ImageDraw.Draw(img)
+# d.text((10, 10), "Hello world", font=fnt, fill=(255, 255, 0))
