@@ -10,6 +10,7 @@
 # #
 
 # ~~~~IMPORT~~~~
+import os
 import pygame
 from pygame.locals import *
 import time
@@ -34,6 +35,12 @@ def fade(width, height):
 def redrawWindow():
     screen.fill((255, 255, 255))
 
+def lastImageNumber():
+    last = 0
+    dir = "./img"
+    for path in os.listdir(dir):
+        last = last + 1
+    return last
 
 # ~~~~MAIN~~~~
 pygame.init()
@@ -41,12 +48,14 @@ screen = pygame.display.set_mode((800, 480))  # , FULLSCREEN
 pygame.mouse.set_visible(False)
 pygame.display.set_caption("Confiance")
 
-image = random.randint(1, 20)
+lastNumber = lastImageNumber()
+
+image = random.randint(1, lastNumber)
 
 while (True):
 
-    img = pygame.image.load(".\img\\"+str(image)+".png")    # For windows user
-    # img = pygame.image.load("./img//"+str(image)+".png")  # For Linux user
+    # img = pygame.image.load(".\img\\"+str(image)+".png")    # For windows user
+    img = pygame.image.load("./img//"+str(image)+".png")  # For Linux user
     img = pygame.transform.scale(img, (800, 480))
 
     fade(1000, 800)
